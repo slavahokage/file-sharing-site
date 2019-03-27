@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block extrastylesheets %}
+    <style>
+        .list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .list li {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .list li:last-child {
+            border: 0;
+        }
+
+        .list li:hover {
+            background-color: #fffbc3;
+        }
+
+        .list li:nth-child(odd) {
+            background-color: #bdf6e9;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <ul class="list">
+        {% if files %}
+            {% for f in files %}
+                <ol class="breadcrumb" style="background-color: #2fa360">
+                    <div class="jumbotron-fluid red">
+                        <h1 class="display-5">{{ f.title }}</h1>
+                        <p class="lead">{{ f.realName }}</p>
+                        <hr class="my-4">
+                        <p class="lead">
+                            <a class="btn btn-primary btn-lg"
+                               href="files/{{ f.source }}"
+                               role="button" id="ds">Download!</a>
+                        </p>
+                    </div>
+                </ol>
+            {% endfor %}
+        {% endif %}
+    </ul>
+
+
+{% endblock %}
